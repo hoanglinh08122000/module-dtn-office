@@ -1,0 +1,61 @@
+<?php
+
+/**
+ * @var Employee $block
+ */
+
+use Dtn\Employee\Block\Employee;
+
+$record = $block->getEditRecord();
+//var_dump($record->getData());
+//die();
+?>
+
+
+<form method="post" action="<?= $block->UrlUpdate() ?>">
+    <div class="control">Derpartment
+        <input type="text" name="department" value="<?php echo $record->getDepartment() ?>">
+    </div>
+    <br>
+
+    <div class="control">Email
+        <input type="email" name="email" value="<?php echo $record->getEmail() ?>">
+    </div>
+    <br>
+
+    <div class="control">First Name
+        <input type="text" name="firstname" class="input-text" value="<?php echo $record->getFirstname() ?>">
+    </div>
+    <br>
+
+    <div class="control">Last Name
+        <input type="text" name="lastname" class="input-text" value="<?php echo $record->getLastname() ?>">
+    </div>
+    <br>
+
+    <div class="control">DOB
+        <input type="text" name="dob" class="input-text disable" value="<?php echo $record->getDob() ?>">
+    </div>
+    <br>
+
+    <div class="control">Working Date
+        <input type="text" name="workingyears" class="input-text" value="<?php echo $record->getWorkingyears() ?>">
+    </div>
+    <br>
+
+    <div class="control">Salary
+        <input type="text" name="salary" class="input-text" value="<?php echo $record->getSalary() ?>">
+    </div>
+    <br>
+
+    <div class="control">Note
+        <input type="text" name="note" class="input-text" value="<?php echo $record->getNote() ?>">
+    </div>
+    <br>
+    <input type="hidden" name="employee_id" value="<?php echo $record->getEmployeeId() ?>">
+
+    <div class="control">
+        <input type="submit" name="edit" value="Save Change" class="action submit primary">
+    </div>
+
+</form>
