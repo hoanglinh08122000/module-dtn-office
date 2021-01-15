@@ -1,0 +1,46 @@
+<?php
+
+/**
+ * @var \Mageplaza\HelloWorld\Block\Display $block
+ */
+
+echo $block->sayHello();
+
+?>
+
+<style>
+    table {  font-family: arial, sans-serif;  border-collapse: collapse;  width: 100%;  margin-top: 30px;}
+    td, th {  border: 1px solid #dddddd;  text-align: left;  padding: 8px;  }
+    tr:nth-child(even) { background-color: #dddddd; }
+    .post-id{width:2%} .post-name{width:30%}
+
+</style>
+
+<table>
+    <tr>
+        <th class="user-id">Id</th>
+        <th class="first-name">First name</th>
+        <th class="last-name">Last name</th>
+        <th class="email">Email</th>
+        <th class="Username">Username</th>
+        <th class="Logdate">Logdate</th>
+
+
+    </tr>
+    <?php
+    foreach ($block->getPostCollection() as $key=>$post){
+        echo '<tr>
+                    <td>'.$post->getUser_id().'</td>
+                    <td>'.$post->getFirstname().'</td>
+                    <td>'.$post->getLastname().'</td>
+                    <td>'.$post->getEmail().'</td>
+                    <td>'.$post->getUsername().'</td>
+                    <td>'.$post->getLogdate().'</td>
+
+                  </tr>';
+    }
+    ?>
+</table>
+
+</body>
+</html>

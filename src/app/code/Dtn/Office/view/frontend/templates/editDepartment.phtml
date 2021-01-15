@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * @var \Dtn\Office\Block\Display $block
+ */
+$record = $block->getEditRecord();
+//var_dump($record->getData());
+//die();
+?>
+
+<form method="post" action="<?= $block->updateNew(); ?>">
+    <lable>Department Name</lable>
+    <br>
+    <br>
+    <input type="text" name="name" value="<?php echo $record->getName() ?>">
+    <br>
+    <br>
+    <input type="number" name="entity_id" value="<?php echo $record->getEntityId() ?>">
+    <br>
+    <button type="submit" class="action submit primary">Save</button>
+</form>

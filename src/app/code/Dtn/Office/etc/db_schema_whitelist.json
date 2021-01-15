@@ -1,0 +1,28 @@
+{
+    "office_department": {
+        "column": {
+            "entity_id": true,
+            "name": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "office_employee_entity": {
+        "column": {
+            "employee_id": true,
+            "department_id": true,
+            "email": true,
+            "firstname": true,
+            "lastname": true,
+            "dob": true,
+            "working_years": true,
+            "salary": true,
+            "note": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "OFFICE_EMPLOYEE_ENTITY_DEPARTMENT_ID_OFFICE_DEPARTMENT_ENTITY_ID": true
+        }
+    }
+}

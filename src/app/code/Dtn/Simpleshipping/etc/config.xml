@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <carriers>
+            <express>
+                <active>1</active>
+                <model>Dtn\Simpleshipping\Model\Carrier\CustomShipping</model>
+                <name>CustomShipping</name>
+                <price>10.00</price>
+                <title>Giao hang tiet kiem</title>
+                <type>F</type>
+            </express>
+        </carriers>
+    </default>
+</config>

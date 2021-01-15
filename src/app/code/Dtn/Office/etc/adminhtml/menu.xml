@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Dtn_Office::main_menu"
+             title="Dtn"
+             resource="Dtn_Office::main_menu"
+             module="Dtn_Office"
+             sortOrder="10"/>
+
+        <add id="Dtn_Office::department"
+             title="Department"
+             module="Dtn_Office"
+             sortOrder="10"
+             resource="Dtn_Office::department"
+             parent="Dtn_Office::main_menu"
+             action="admindtn/department/index"/>
+
+        <add id="Dtn_Office::employee"
+             title="Employee"
+             module="Dtn_Office"
+             sortOrder="10"
+             resource="Dtn_Office::employee"
+             parent="Dtn_Office::main_menu"
+             action="admindtn/employee/index"/>
+    </menu>
+</config>

@@ -1,0 +1,177 @@
+<?php
+
+/**
+ * @var \Dtn\Office\Block\Employee $block
+ */
+$department = $block->getDepartment();
+?>
+
+<form method="post" action="<?= $block->addNew() ?>">
+    <div class="mainForm">
+        <div class="leftForm">
+            <div class="control">
+                <p>Department</p>
+                <select name="department_id">
+                    <option>Select</option>
+                    <?php
+                    foreach ($department as $value): ?>
+                        <option value="<?php echo $value->getId(); ?>">
+                            <?php echo $value->getName(); ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <br>
+            <div class="control">
+                <p>Email</p>
+                <input type="email" name="email" placeholder="email" required><br>
+            </div>
+            <br>
+            <div class="control">
+                <p>First Name</p>
+                <input type="text" name="firstname" class="input-text" placeholder="firstname" required>
+            </div>
+            <br>
+        </div>
+        <div class="centerForm">
+            <div class="control">
+                <p>Last Name</p>
+                <input type="text" name="lastname" class="input-text" placeholder="lastname" required>
+            </div>
+            <br>
+            <div class="dob">
+                <p>DOB</p>
+                <input type="date" name="dob" class="input-text" placeholder="y/m/d" required>
+            </div>
+            <br>
+            <div class="wd">
+                <p>Working Date</p>
+                <input type="number" name="working_years" class="input-text" placeholder="number working years"
+                       required>
+            </div>
+            <br>
+        </div>
+        <div class="rightForm">
+            <div class="salary">
+                <p>Salary</p>
+                <input type="number" name="salary" class="input-text" placeholder="salary" required>
+            </div>
+            <br>
+            <div class="salary">
+                <p>Note</p>
+                <input type="text" name="note" class="input-text" placeholder="note" required>
+            </div>
+            <br>
+            <div class="btn">
+                <input type="submit" name="edit" value="Add" class="action submit primary">
+            </div>
+        </div>
+    </div>
+</form>
+<br>
+<br>
+<!--fillter-->
+<form method="post" action="<?php $block->getEmployee(); ?>">
+    <div class="_searchForm">
+        <div class="_right">
+            <select name="fillter">
+                <option>Select filter</option>
+                <option value="department">Employee on department Id>5</option>
+                <option value="wrokingyears">Employee have working years > 2</option>
+                <option value="salary">Salary more than 10tr</option>
+                <!--                <option value="less">Salary less than 10tr</option>-->
+                <!--                <option value="It">IT staff</option>-->
+            </select>
+        </div>
+        <br>
+        <div class="_s_btn">
+            <input type="submit" name="search" value="Search" class="action submit primary">
+        </div>
+    </div>
+</form>
+<br>
+
+<!--css table -->
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 30px;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
+    .post-id {
+        width: 2%
+    }
+
+    .post-name {
+        width: 30%
+    }
+
+</style>
+<!--show table employee-->
+<h3>
+    Employee
+</h3>
+<table>
+    <thead>
+    <tr>
+        <th class="id">Id</th>
+        <th class="department_id">Department_ID</th>
+        <th class="email">Email</th>
+        <th class="first_name">First_name</th>
+        <th class="last_name">Last_name</th>
+        <th class="working_years">Working years</th>
+        <th class="dob">Date of Birth</th>
+        <th class="salary">Salary</th>
+        <th class="note">Note</th>
+        <th class="action">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($block->getEmployee() as $key => $post): ?>
+        </tr>
+        <td><?php echo $post->getData('employee_id') ?></td>
+        <td>
+            <?php
+            foreach ($department as $value):
+                if ($post->getData('department_id') === $value->getEntityId()):
+                    echo $value->getName();
+                endif;
+            endforeach;
+            ?>
+        </td>
+        <td><?php echo $post->getData('email') ?></td>
+        <td><?php echo $post->getData('firstname') ?></td>
+        <td><?php echo $post->getData('lastname') ?></td>
+        <td><?php echo $post->getData('working_years') ?></td>
+        <td><?php echo $post->getData('dob') ?></td>
+        <td><?php echo $post->getData('salary') ?></td>
+        <td><?php echo $post->getData('note') ?></td>
+        <td>
+            <a class="action primary"
+               href="<?= $block->getBaseUrl() . 'dtnoffice/employee/delete/id/' . $post['employee_id'] ?>">
+                Delete
+            </a>
+            <a class="action primary"
+               href="<?= $block->getBaseUrl() . 'dtnoffice/employee/get/id/' . $post['employee_id'] ?>">
+                Update
+            </a>
+        </td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>
+<!--<td>'.$post->getData('entity_id').'</td>-->
+</body>
+</html>

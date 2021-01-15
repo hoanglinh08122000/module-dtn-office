@@ -1,0 +1,105 @@
+<?php
+
+/**
+ * @var \Dtn\Office\Block\Display $block
+ */
+
+
+?>
+
+<form method="post" action="<?= $block->addNew() ?>">
+    <div class="control">
+        <input type="text" name="name" autofocus placeholder="name" required><br>
+    </div>
+    <br>
+    <div class="control">
+        <input type="submit" name="edit" value="Add" class="action submit primary">
+    </div>
+    <br>
+</form>
+
+<br>
+
+<!-- filter -->
+<form method="post" action="<?php $block->getPostCollection(); ?>">
+    <div class="_searchForm">
+        <div class="_right">
+            <select name="department">
+                <option>Select</option>
+                <option value="equal">Department id>5</option>
+                <option value="like">Department start with A</option>
+            </select>
+        </div>
+        <br>
+
+        <div class="_s_btn">
+            <input type="submit" name="search" value="Search" class="action submit primary">
+        </div>
+    </div>
+</form>
+<br>
+<!-- Css cho table-->
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 30px;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
+    .post-id {
+        width: 2%
+    }
+
+    .post-name {
+        width: 30%
+    }
+
+</style>
+
+<!-- table information department-->
+<table>
+    <thead>
+    <tr>
+        <th class="id">Id</th>
+        <th class="name">Name</th>
+        <th class="action">Action</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <?php foreach ($block->getPostCollection() as $key => $post): ?>
+        <tr>
+            <td>
+                <?php echo $post->getEntityId(); ?>
+            </td>
+            <td>
+                <?php echo $post->getName(); ?>
+            </td>
+            <td>
+                <a class="action primary"
+                   href="<?= $block->getBaseUrl() . 'dtnoffice/department/delete/id/' . $post['entity_id'] ?>">
+                    Delete
+                </a>
+                <a class="action primary"
+                   href="<?= $block->getBaseUrl() . 'dtnoffice/department/get/id/' . $post['entity_id'] ?>">
+                    Update
+                </a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+
+</table>
+
+

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Dtn_Img::main_img"
+             title="Image"
+             resource="Dtn_Img::main_menu"
+             module="Dtn_Img"
+             sortOrder="10"/>
+
+        <add id="Dtn_Img::imgage"
+             title="Image"
+             module="Dtn_Img"
+             sortOrder="10"
+             resource="Dtn_Img::image"
+             parent="Dtn_Img::main_img"
+             action="adminimg/img/index"/>
+    </menu>
+</config>
